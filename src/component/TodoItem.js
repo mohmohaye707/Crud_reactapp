@@ -10,7 +10,7 @@ const TodoItem =({title},removeTodo) => {
       setIsEditing(true);
   };
   
-  const handleInputKeyDown =()=>{
+  const handleInputKeyDown =(e)=>{
       const key= e.keyCode;
 
       if(key===13) {            //for enter key
