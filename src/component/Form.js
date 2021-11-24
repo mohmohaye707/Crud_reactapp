@@ -32,7 +32,7 @@ const Form = ({addTodo}) =>{
   return ( 
 
       <div>
-         <form className={classes.root} noValidate autoComplete="off" onSubmit={handleFormSubmit}>
+         <form className={classes.root} onSubmit={handleFormSubmit}>
             <TextField
                id="outlined-secondary"
                value={inputValue}

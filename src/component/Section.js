@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Section = ({childern}) =>{
+const Section = ({children}) =>{
   return (
       <div style={{margin:"50px"}}>
-          {childern}
+          {children}
       </div>
   )
 }
