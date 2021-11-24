@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+
 const Form = ({addTodo}) =>{
   const[inputValue,setInputValue]=useState("");
 
@@ -25,7 +26,26 @@ const Form = ({addTodo}) =>{
             width: '25ch',
          },
          },
+         Button:{
+            width:'8ch',
+            color:'blue'
+         },
       }));
+
+    /*const useStyles = makeStyles({
+       form:{
+          align:"center"
+       },
+       TextField:{
+         id:"outlined-basic",
+         label:"Enter something to do...",
+         variant:"outlined",
+         color:"primary",
+         margin:"10px 10px",
+         alignItems:"center"
+       }
+    }
+    );*/
    
    const classes = useStyles();
       
@@ -34,23 +54,24 @@ const Form = ({addTodo}) =>{
       <div>
          <form className={classes.root} onSubmit={handleFormSubmit}>
             <TextField
-               id="outlined-secondary"
                value={inputValue}
                onChange={handleInputChange}
+               id="outlined-basic"
                label="Enter something to do..."
-               variant="filled"
+               variant="outlined"
                color="primary"
+               margin="10px 10px"
+               alignItems="center"
             />
-            <div className={classes.root}>
             <Button 
+              className={classes.Button}
               variant="contained"
-              color="blue"
               type= "submit"
-              //onClick={handleFormSubmit}
+              onClick={handleFormSubmit}
             >
                Add
             </Button>
-            </div>
+            
          </form>
         </div>
     )

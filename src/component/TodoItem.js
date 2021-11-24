@@ -3,11 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-const TodoItem =({title},removeTodo) => {
+const TodoItem =({title},removeTodoItemProps) => {
   const [isEditing,setIsEditing] = useState(false);
   const [value,setValue] = useState(title);
   const [tempValue,setTempValue] = useState(title);
-  const [completed,setCompleted] = useState(false);
+ // const [completed,setCompleted] = useState(false);
 
   const handleDoubleClick= ()=>{
       setIsEditing(true);
@@ -29,14 +29,14 @@ const TodoItem =({title},removeTodo) => {
       setTempValue(e.target.value);
   };
 
-  const handleButtonClick =() => {
-      setCompleted((oldCompleted) => ! oldCompleted);
-  };
+ /* const handleButtonClick =() => {
+      setCompleted(!completedState);
+  };*/
   
   const handleFormSubmit = (e) =>{
   e.preventDefault();
   }
-  
+
   const useStyles = makeStyles((theme) => ({
       root: {
       '& > *': {
@@ -44,6 +44,10 @@ const TodoItem =({title},removeTodo) => {
         width: '25ch',
       },
       },
+      Button:{
+        color:'green',
+      },
+
   }));
 
   const classes = useStyles();
@@ -63,26 +67,24 @@ const TodoItem =({title},removeTodo) => {
                 <>
                   <div className={classes.root} onDoubleClick={handleDoubleClick}>
                     <div>
-                        <h2 className={classes.root + (completedState ? "green" : "")}>{value}</h2>
+                        <h2>{value}</h2>
                     </div>
                   </div>
-                  <div>
-                    <button 
+                  <div >
+                    <Button 
                       varient="contained"
-                      onClick={handleButtonClick}
+                     // onClick={handleButtonClick}
                       width="12ch"
                     >
                        Check
-                    </button>
-                  </div>
-                  <div>
-                    <button 
+                    </Button>
+                    <Button 
                        varient="contained"
-                       onClick={removeTodo}
+                       onClick={removeTodoItemProps}
                        width="12ch"
                     >
                         Remove
-                    </button>
+                    </Button>
                   </div>
                 </>
           }

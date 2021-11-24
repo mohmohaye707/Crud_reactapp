@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Form from './component/Form';
 import Section from './component/Section';
 import TodoList from './component/TodoList';
@@ -20,23 +23,36 @@ const App =()=>{
   };
 
   const removeTodo =(id)=>{
-    setToDoList((oldList) => oldList.filter((item)=> item.id !== id))
+    setToDoList((oldList) => oldList.filter((item)=> item.id !== id));
   };
 
+  const useStyles = makeStyles({
+      root:{
+        flexGrow: 1,
+      }
+  }
+  );
+
+  const classes = useStyles();
+
   return  <div>
+    <Typography color="Blue"  variant="h3">
       <Section>
        <div>
-         <h1>{appTitle}</h1>
+           {appTitle}
        </div>
       </Section>
+      </Typography>
+      <Grid>
       <Section>
        <div>
          <Form addTodo={addTodo}/>
        </div>
       </Section>
       <Section>
-        <TodoList removeTodo ={removeTodo} list={todoList}/>
+        <TodoList removeTodoListProps ={removeTodo} list={todoList}/>
       </Section>
+    </Grid>
   </div>;
 }
 export default App;
